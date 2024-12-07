@@ -13,13 +13,13 @@ This script allows you to send a query to the NVIDIA API and retrieve a response
 2. Make the script executable:
 
     ```bash
-    chmod +x nvidia_chat.sh
+    chmod +x llama3.sh
     ```
 
 3. Run the script with your query as an argument:
 
     ```bash
-    ./nvidia_chat.sh "Your query here"
+    ./llama3.sh "Your query here"
     ```
 
 ## Script Details
@@ -34,4 +34,9 @@ The script performs the following actions:
 ## Example
 
 ```bash
-./nvidia_chat.sh "What is the weather like today?"
+./llama.sh "What is the weather like today?"
+```
+## Notes
+- Ensure that you replace the Authorization token with a valid token.
+- The API model used is [meta/llama3-70b-instruct](https://build.nvidia.com/meta/llama3-70b?snippet_tab=Shell).
+- The streaming option is enabled.
