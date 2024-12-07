@@ -1,9 +1,14 @@
 #!/bin/bash
 
+# Load .env file
+if [ -f .env ]; then
+  export $(cat .env | xargs)
+fi
+
 query="$1"
 response=$(curl -s https://integrate.api.nvidia.com/v1/chat/completions \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer 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" \
+  -H "Authorization: Bearer $BEARER_TOKEN" \
   -d '{
     "model": "meta/llama3-70b-instruct",
     "messages": [
@@ -15,6 +20,5 @@ response=$(curl -s https://integrate.api.nvidia.com/v1/chat/completions \
     "max_tokens": 1024,
     "stream": true
   }')
-# echo "$response" | grep -oP '"content":"\K[^"]+' | sed 's/\\n/\n/g'
 echo -e "$response" | grep -oP '"content":"\K[^"]+' | tr -d '\n'
 echo
